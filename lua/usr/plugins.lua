@@ -39,42 +39,51 @@ packer.init({
 })
 
 -- Install your plugins here
-return packer.startup( function(use)
+return packer.startup(function(use)
+	use({ "wbthomason/packer.nvim" })
+	use({ "nvim-tree/nvim-tree.lua", tag = "v1.4.0", requires = { "nvim-tree/nvim-web-devicons" } }) --file tree
+	use({
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+	-- LSP
+	use({ "neovim/nvim-lspconfig" }) -- enable LSP
+	use({ "williamboman/mason.nvim" }) -- simple to use language server installer
+	use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "tamago324/nlsp-settings.nvim" })
+	use({ "nvimtools/none-ls.nvim" }) -- formatting plugin
+	-- CMP
+	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
+	use({ "hrsh7th/cmp-path" }) -- path completions
+	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
+	use({ "L3MON4D3/LuaSnip" })
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-nvim-lua" })
+	-- Comment Plugins
+	use({ "numToStr/Comment.nvim", tag = "v0.8.0" })
+	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+	-- fuzzy finder
+	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", { run = ":TSUpdate" } })
+	use({ "RRethy/vim-illuminate", commit = "5eeb795" })
 
-	use{'wbthomason/packer.nvim'}
-	use{'nvim-tree/nvim-tree.lua',tag="v1.4.0", requires={'nvim-tree/nvim-web-devicons'} } --file tree
-	use {'windwp/nvim-autopairs',event = "InsertEnter",
-	config = function()
-        require("nvim-autopairs").setup {}
-   	end
-	}
-    -- LSP
-    use { "neovim/nvim-lspconfig" } -- enable LSP
-    use { "williamboman/mason.nvim"} -- simple to use language server installer
-    use { "williamboman/mason-lspconfig.nvim" }
-    -- CMP
-    use { "hrsh7th/nvim-cmp" } -- The completion plugin
-    use { "hrsh7th/cmp-buffer" } -- buffer completions
-    use { "hrsh7th/cmp-path" } -- path completions
-    use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
-    use { "L3MON4D3/LuaSnip" }
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "hrsh7th/cmp-nvim-lua" }
-    use {"JoosepAlviste/nvim-ts-context-commentstring"}
-    use{"nvimtools/none-ls.nvim"}
-	use{"nvim-treesitter/nvim-treesitter",tag="v0.9.2",{run=':TSUpdate'}}
-	use{'RRethy/vim-illuminate',commit="5eeb795"}
-
-	use{'nvim-telescope/telescope.nvim',tag="0.1.8"}
-	use{'nvim-lua/plenary.nvim',tag='v0.1.4'}
--- git plugins
-	use{'lewis6991/gitsigns.nvim',tag="v0.9.0"}
-	use{'tpope/vim-fugitive',tag="v3.7"}
---
-
-
+	use({ "nvim-telescope/telescope.nvim", tag = "0.1.8" })
+	use({ "nvim-lua/plenary.nvim", tag = "v0.1.4" })
+	-- git plugins
+	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
+	use({ "tpope/vim-fugitive", tag = "v3.7" })
+	--
+	use({ "mbbill/undotree", tag = "rel_6.1" })
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({})
+		end,
+	})
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
-end
-)
+end)
