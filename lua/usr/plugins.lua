@@ -66,22 +66,27 @@ return packer.startup(function(use)
 	-- Comment Plugins
 	use({ "numToStr/Comment.nvim", tag = "v0.8.0" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	-- fuzzy finder
 	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", { run = ":TSUpdate" } })
 	use({ "RRethy/vim-illuminate", commit = "5eeb795" })
-
+	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.8" })
 	use({ "nvim-lua/plenary.nvim", tag = "v0.1.4" })
-	-- git plugins
-	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
-	use({ "tpope/vim-fugitive", tag = "v3.7" })
 	--
-	use({ "mbbill/undotree", tag = "rel_6.1" })
+	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" }) -- git plugin
+	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup({})
 		end,
+	})
+	-- colorscheme
+	use({
+		"EdenEast/nightfox.nvim",
+		-- config = function()
+		-- 	vim.cmd("colorscheme nightfox")
+		-- 	require("nightfox").setup()
+		-- end,
 	})
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
