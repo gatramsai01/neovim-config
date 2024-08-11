@@ -1,13 +1,13 @@
 local servers = {
 	"lua_ls",
-	-- "cssls",
-	"gopls",
-	-- "html",
-	-- "tsserver",
+	"cssls",
+	-- "gopls",
+	"html",
+	"tsserver",
 	"pyright",
-	-- "bashls",
+	"bashls",
 	"jsonls",
-	-- "yamlls",
+	"yamlls",
 }
 
 local settings = {
@@ -45,6 +45,13 @@ for _, server in pairs(servers) do
 	server = vim.split(server, "@")[1]
 
 	local require_ok, conf_opts = pcall(require, "usr.lsp.settings." .. server)
+    -- if server=="gopls" then
+    --     local gopls_status_ok,gopls_config=pcall(require,"go.lsp")
+    --     if not gopls_status_ok then
+    --         local cfg = gopls_config.config()
+    --         opts = vim.tbl_deep_extend('force', cfg,opts)
+    --     end
+    -- end
 	if require_ok then
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
 	end

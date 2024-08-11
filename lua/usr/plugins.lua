@@ -55,18 +55,26 @@ return packer.startup(function(use)
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "tamago324/nlsp-settings.nvim" })
 	use({ "nvimtools/none-ls.nvim" }) -- formatting plugin
+	use({ "mfussenegger/nvim-dap", tag = "0.8.0" }) -- debug adapeter protocol
 	-- CMP
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
 	use({ "hrsh7th/cmp-path" }) -- path completions
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
-	use({ "L3MON4D3/LuaSnip" })
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lua" })
+	-- Snippets
+	use({
+		"L3MON4D3/LuaSnip",
+		tag = "v2.*",
+		run = "make install_jsregexp",
+		requires = { "rafamadriz/friendly-snippets" },
+	})
 	-- Comment Plugins
 	use({ "numToStr/Comment.nvim", tag = "v0.8.0" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", { run = ":TSUpdate" } })
+	--
+	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", { run = ":TSUpdate" } }) -- treesitter plugin
 	use({ "RRethy/vim-illuminate", commit = "5eeb795" })
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.8" })
@@ -74,20 +82,17 @@ return packer.startup(function(use)
 	--
 	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" }) -- git plugin
 	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
+	use({ "EdenEast/nightfox.nvim" }) -- colorscheme plugin
+	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup({})
 		end,
 	})
-	-- colorscheme
-	use({
-		"EdenEast/nightfox.nvim",
-		-- config = function()
-		-- 	vim.cmd("colorscheme nightfox")
-		-- 	require("nightfox").setup()
-		-- end,
-	})
+	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
+	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

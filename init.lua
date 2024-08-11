@@ -1,9 +1,12 @@
-require "usr.plugins"
-require "usr.options"
-require "usr.nvim-tree"
-require "usr.lsp"
-require "usr.cmp"
-require "usr.treesitter"
-require "usr.comment"
-require "usr.keymaps"
-require "usr.telescope"
+require("usr.plugins")
+require("usr.options")
+require("usr.nvim-tree")
+require("usr.lsp")
+require("usr.cmp")
+require("usr.treesitter")
+require("usr.comment")
+require("usr.keymaps")
+require("usr.telescope")
+require("usr.colorscheme")
+require("usr.nvim-ufo")
+-- require("usr.go_nvim")

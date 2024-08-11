@@ -21,7 +21,11 @@ nvim_tree.setup({
 		width = 30,
 		side = "left",
 	},
+	modified = {
+		enable = true,
+	},
 	renderer = {
+		highlight_modified = "all",
 		group_empty = true,
 		root_folder_modifier = ":t",
 		icons = {
