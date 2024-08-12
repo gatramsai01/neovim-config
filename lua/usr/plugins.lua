@@ -92,7 +92,7 @@ return packer.startup(function(use)
 	})
 	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
 	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
-
+	use({ "nvim-lualine/lualine.nvim" })
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
