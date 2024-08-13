@@ -3,11 +3,6 @@ vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("i", "kj", "<ESC>")
 
 local opts = { noremap = true, silent = true }
--- Fugitive keymap
-
-vim.keymap.set("n", "<leader>gs", function()
-	vim.cmd("Git | resize 20 | wincmd J")
-end)
 --Remap space as leader key
 vim.keymap.set("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
