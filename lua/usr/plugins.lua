@@ -79,11 +79,12 @@ return packer.startup(function(use)
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.8" })
 	use({ "nvim-lua/plenary.nvim", tag = "v0.1.4" })
-	--
-	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" }) -- git plugin
+	-- Git Plugins
+    use({"tpope/vim-fugitive"})
+	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
+    --
 	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
 	use({ "EdenEast/nightfox.nvim" }) -- colorscheme plugin
-	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
@@ -91,8 +92,10 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
-	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
 	use({ "nvim-lualine/lualine.nvim" })
+    -- language plugins
+	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
+	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
