@@ -1,15 +1,6 @@
-local utils = require("lspconfig/util")
-return {
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	root_dir = utils.root_pattern("go.mod", "go.work", ".git"),
-	settings = {
-		gopls = {
-			completeUnimported = true,
-			usePlaceHolder = true,
-			analyses = {
-				unusedparams = true,
-			},
-		},
-	},
-}
+local status_ok, go_pls_cap = pcall(require, "go.lsp")
+if not status_ok then
+	return
+end
+
+return go_pls_cap.config()

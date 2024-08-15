@@ -1,6 +1,11 @@
-local status_ok,go=pcall(require,"go")
+local status_ok, go = pcall(require, "go")
 if not status_ok then
-    return
+	return
 end
 
-go.setup()
+go.setup({
+	goimports = "goimports",
+	lsp_cfg = false,
+	lsp_keymaps = false,
+	luasnip = true,
+})
