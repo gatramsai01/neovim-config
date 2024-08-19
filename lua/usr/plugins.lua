@@ -54,7 +54,7 @@ return packer.startup(function(use)
 	use({ "williamboman/mason.nvim" }) -- simple to use language server installer
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "tamago324/nlsp-settings.nvim" })
-	use({ "nvimtools/none-ls.nvim" }) -- formatting plugin
+	use({ "nvimtools/none-ls.nvim", requires = { "nvimtools/none-ls-extras.nvim" } }) -- formatting plugin
 	use({ "mfussenegger/nvim-dap", tag = "0.8.0" }) -- debug adapeter protocol
 	-- CMP
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -80,9 +80,9 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.8" })
 	use({ "nvim-lua/plenary.nvim", tag = "v0.1.4" })
 	-- Git Plugins
-    use({"tpope/vim-fugitive"})
+	use({ "tpope/vim-fugitive" })
 	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
-    --
+	--
 	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
 	use({ "EdenEast/nightfox.nvim" }) -- colorscheme plugin
 	use({
@@ -93,7 +93,7 @@ return packer.startup(function(use)
 	})
 	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
 	use({ "nvim-lualine/lualine.nvim" })
-    -- language plugins
+	-- language plugins
 	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
 	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
 	if PACKER_BOOTSTRAP then
