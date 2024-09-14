@@ -18,7 +18,11 @@ nvim_tree.setup({
 	view = {
 		number = true,
 		relativenumber = true,
-		width = 30,
+		width = {
+			min = 30,
+			max = 50,
+			padding = 5,
+		},
 		side = "left",
 	},
 	modified = {
