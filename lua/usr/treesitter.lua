@@ -45,6 +45,6 @@ function M.config()
 			enable_autocmd = false,
 		},
 	})
-end
+vim.g.skip_ts_context_commentstring_module = true
 
 return M

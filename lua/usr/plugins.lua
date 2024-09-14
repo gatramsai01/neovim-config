@@ -73,6 +73,7 @@ return packer.startup(function(use)
 	-- Comment Plugins
 	use({ "numToStr/Comment.nvim", tag = "v0.8.0" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+    use({'folke/ts-comments.nvim',tag='v1.5.0'})
 	--
 	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", { run = ":TSUpdate" } }) -- treesitter plugin
 	use({ "RRethy/vim-illuminate", commit = "5eeb795" })
