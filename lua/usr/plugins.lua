@@ -90,6 +90,7 @@ return packer.startup(function(use)
 	use({ "j-hui/fidget.nvim",tag = "v1.4.5"})
 	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
 	use({ "nvim-lualine/lualine.nvim" })
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	-- language plugins
 	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
 	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
