@@ -86,11 +86,7 @@ return packer.startup(function(use)
 	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
 	use({ "EdenEast/nightfox.nvim" }) -- colorscheme plugin
 	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup({})
-		end,
-	})
+	use({ "j-hui/fidget.nvim",tag = "v1.4.5"})
 	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
 	use({ "nvim-lualine/lualine.nvim" })
 	-- language plugins
