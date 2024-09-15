@@ -84,8 +84,8 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
 	--
 	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
-	use({ "EdenEast/nightfox.nvim" }) -- colorscheme plugin
-	use({
+	-- use({ "EdenEast/nightfox.nvim" }) -- colorscheme plugin
+	use({ "catppuccin/nvim", tag = "v1.9.0" })
 	use({ "j-hui/fidget.nvim",tag = "v1.4.5"})
 	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
 	use({ "nvim-lualine/lualine.nvim" })
