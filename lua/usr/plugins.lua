@@ -95,6 +95,9 @@ return packer.startup(function(use)
 	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
 	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
     use({"ThePrimeagen/harpoon",branch="harpoon2"})
+
+    use({"kylechui/nvim-surround", tag = "v2.3.0" })
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
