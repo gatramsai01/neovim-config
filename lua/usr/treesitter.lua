@@ -19,7 +19,6 @@ configs.setup({
         "typescript",
         "json",
         "proto",
-        -- "pip requirements",
         "rust",
         "yaml",
         "toml",
