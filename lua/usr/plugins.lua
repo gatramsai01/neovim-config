@@ -54,6 +54,7 @@ return packer.startup(function(use)
 	use({ "williamboman/mason.nvim" }) -- simple to use language server installer
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "tamago324/nlsp-settings.nvim" })
+    use({"nvimtools/none-ls.nvim", requires={"nvimtools/none-ls-extras.nvim"}})
     use({"stevearc/conform.nvim"})
 	use({ "mfussenegger/nvim-dap", tag = "0.8.0" }) -- debug adapeter protocol
 	-- CMP
