@@ -97,7 +97,7 @@ return packer.startup(function(use)
     use({"ThePrimeagen/harpoon",branch="harpoon2"})
 
     use({"windwp/nvim-ts-autotag"})
-   -- use({"kylechui/nvim-surround", tag = "v2.3.0" })
+    -- use({"kylechui/nvim-surround", tag = "v2.3.0" })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
