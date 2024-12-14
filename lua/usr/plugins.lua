@@ -93,7 +93,7 @@ return packer.startup(function(use)
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	-- language plugins
-	use({ "ray-x/go.nvim", tag = "v0.9.0" }) -- golang plugin
+	use({ "ray-x/go.nvim" }) -- golang plugin
 	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
     use({"ThePrimeagen/harpoon",branch="harpoon2"})
 
