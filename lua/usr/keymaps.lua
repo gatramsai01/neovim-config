@@ -27,3 +27,5 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts) -- undo tree toggle
+
+vim.keymap.set({ "n", "v" }, "<leader>w", "<C-w>", opts)
