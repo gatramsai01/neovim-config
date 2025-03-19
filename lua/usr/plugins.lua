@@ -50,15 +50,14 @@ return packer.startup(function(use)
 		end,
 	})
 	-- LSP
-	use({ "neovim/nvim-lspconfig" }) -- enable LSP
-	use({ "williamboman/mason.nvim" }) -- simple to use language server installer
-	use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "neovim/nvim-lspconfig", tag = "v1.7.0" }) -- enable LSP
+	use({ "williamboman/mason.nvim", tag = "v1.11.0" }) -- simple to use language server installer
+	use({ "williamboman/mason-lspconfig.nvim", tag = "v1.32.0" })
 	use({ "tamago324/nlsp-settings.nvim" })
-    use({"nvimtools/none-ls.nvim", requires={"nvimtools/none-ls-extras.nvim"}})
-    use({"stevearc/conform.nvim"})
+	use({ "nvimtools/none-ls.nvim", requires = { "nvimtools/none-ls-extras.nvim" } })
 	use({ "mfussenegger/nvim-dap", tag = "0.8.0" }) -- debug adapeter protocol
 	-- CMP
-	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+	use({ "hrsh7th/nvim-cmp", tag = "v0.0.2" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
 	use({ "hrsh7th/cmp-path" }) -- path completions
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
@@ -74,31 +73,32 @@ return packer.startup(function(use)
 	-- Comment Plugins
 	use({ "numToStr/Comment.nvim", tag = "v0.8.0" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-    use({'folke/ts-comments.nvim',tag='v1.5.0'})
+	use({ "folke/ts-comments.nvim", tag = "v1.5.0" })
 	--
 	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", { run = ":TSUpdate" } }) -- treesitter plugin
 	use({ "RRethy/vim-illuminate", commit = "5eeb795" })
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.8" })
-	use({ "nvim-lua/plenary.nvim", tag = "v0.1.4" })
+	use({ "nvim-lua/plenary.nvim", branch="master" })
 	-- Git Plugins
 	use({ "tpope/vim-fugitive" })
 	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
 	--
 	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
-	-- use({ "EdenEast/nightfox.nvim" }) -- colorscheme plugin
 	use({ "catppuccin/nvim", tag = "v1.9.0" })
-	use({ "j-hui/fidget.nvim",tag = "v1.4.5"})
+	use({ "j-hui/fidget.nvim", tag = "v1.4.5" })
 	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
 	use({ "nvim-lualine/lualine.nvim" })
-	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	-- language plugins
-	use({ "ray-x/go.nvim" }) -- golang plugin
+	use({ "ray-x/go.nvim", tag = "v0.10.0" }) -- golang plugin
 	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
-    use({"ThePrimeagen/harpoon",branch="harpoon2"})
+	use({ "ThePrimeagen/harpoon", branch = "harpoon2" })
 
-    use({"windwp/nvim-ts-autotag"})
-    use({"kylechui/nvim-surround", tag = "v2.3.0" })
+	use({ "windwp/nvim-ts-autotag" })
+	use({ "kylechui/nvim-surround", tag = "v2.3.0" })
+
+	use({ "olimorris/codecompanion.nvim", tag = "v14.1.0" }) -- ai code completion
+    use({"OXY2DEV/markview.nvim",tag="v25.5.1"})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
