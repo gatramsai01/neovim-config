@@ -41,7 +41,7 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })
-	use({ "nvim-tree/nvim-tree.lua", tag = "v1.4.0", requires = { "nvim-tree/nvim-web-devicons" } }) --file tree
+	use({ "nvim-tree/nvim-tree.lua", tag = "v1.12.0", requires = { "nvim-tree/nvim-web-devicons" } }) --file tree
 	use({
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -75,11 +75,11 @@ return packer.startup(function(use)
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	use({ "folke/ts-comments.nvim", tag = "v1.5.0" })
 	--
-	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", { run = ":TSUpdate" } }) -- treesitter plugin
+	use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.3", { run = ":TSUpdate" } }) -- treesitter plugin
 	use({ "RRethy/vim-illuminate", commit = "5eeb795" })
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.8" })
-	use({ "nvim-lua/plenary.nvim", branch="master" })
+	use({ "nvim-lua/plenary.nvim", branch = "master" })
 	-- Git Plugins
 	use({ "tpope/vim-fugitive" })
 	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
@@ -97,8 +97,8 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "kylechui/nvim-surround", tag = "v2.3.0" })
 
-	use({ "olimorris/codecompanion.nvim", tag = "v14.1.0" }) -- ai code completion
-    use({"OXY2DEV/markview.nvim",tag="v25.5.1"})
+	use({ "OXY2DEV/markview.nvim", tag = "v25.5.1" })
+	use({ "olimorris/codecompanion.nvim", requires = { "ravitemer/codecompanion-history.nvim" } })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

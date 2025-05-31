@@ -6,11 +6,12 @@ end
 vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
 
 nvim_tree.setup({
+	respect_buf_cwd = false,
 	disable_netrw = true,
 	hijack_netrw = true,
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
+		update_cwd = false,
 	},
 	sort = {
 		sorter = "case_sensitive",

@@ -4,12 +4,13 @@ local servers = {
 	"gopls",
 	"html",
 	"ts_ls",
-    "eslint",
+	"eslint",
 	"pyright",
 	"bashls",
 	"jsonls",
 	"yamlls",
-    "tailwindcss"
+	"tailwindcss",
+    "helm_ls"
 }
 
 local settings = {
@@ -39,16 +40,16 @@ end
 local opts = {}
 
 for _, server in pairs(servers) do
-    if server == "eslint" then
-        opts={
-            capabilities = require("usr.lsp.handlers").capabilities
-        }
-    else
-        opts = {
-            on_attach = require("usr.lsp.handlers").on_attach,
-            capabilities = require("usr.lsp.handlers").capabilities,
-        }
-    end
+	if server == "eslint" then
+		opts = {
+			capabilities = require("usr.lsp.handlers").capabilities,
+		}
+	else
+		opts = {
+			on_attach = require("usr.lsp.handlers").on_attach,
+			capabilities = require("usr.lsp.handlers").capabilities,
+		}
+	end
 
 	server = vim.split(server, "@")[1]
 
@@ -56,6 +57,5 @@ for _, server in pairs(servers) do
 	if require_ok then
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
 	end
-
 	lspconfig[server].setup(opts)
 end
