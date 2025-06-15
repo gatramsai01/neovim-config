@@ -38,9 +38,7 @@ null_ls.setup({
 			end,
 		}),
 		-- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		require("none-ls.formatting.rustfmt"),
-		require("none-ls.diagnostics.ruff"),
 	},
 })
