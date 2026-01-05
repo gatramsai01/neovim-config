@@ -3,24 +3,31 @@ if not status_ok then
 	return
 end
 
-local groq_adapter = require("codecompanion.adapters.openai_compatible")
+local groq_adapter = require("codecompanion.adapters.http.openai_compatible")
 
 groq_adapter.name = "groq"
 groq_adapter.formatted_name = "Groq"
 groq_adapter.opts.stream = true
 groq_adapter.env.api_key = "GROQ_API_KEY"
 groq_adapter.env.url = "https://api.groq.com/openai"
-groq_adapter.schema.model.default = "meta-llama/llama-4-maverick-17b-128e-instruct"
+groq_adapter.schema.model.default = "moonshotai/kimi-k2-instruct"
 
-local const = {
-	provider = "telescope",
-	gemini = "gemini",
+local provider = {
+	fuzzy_finder = "telescope",
+	llm = "gemini",
 	groq = "groq",
 }
+
+local gemini = require("codecompanion.adapters.http.gemini")
+
+gemini.schema.model.default = "gemini-3-flash-preview"
 
 vim.g.codecompanion_auto_tool_mode = true
 -- Setup codecompanion
 codecompanion.setup({
+	opts = {
+		log_level = "DEBUG",
+	},
 	extensions = {
 		history = {
 			enable = true,
@@ -30,40 +37,42 @@ codecompanion.setup({
 		},
 	},
 	adapters = {
-		groq = groq_adapter,
+		http = {
+			groq = groq_adapter,
+		},
 	},
-	strategies = {
+	interactions = {
 		chat = {
-			adapter = const.groq,
+			adapter = provider.llm,
 			slash_commands = {
 				["symbols"] = {
 					opts = {
 						contains_code = true,
-						provider = const.provider,
+						provider = provider.fuzzy_finder,
 						silent = false,
 					},
 				},
 				["file"] = {
 					opts = {
-						provider = const.provider,
+						provider = provider.fuzzy_finder,
 					},
 				},
 				["buffer"] = {
 					opts = {
-						provider = const.provider,
+						provider = provider.fuzzy_finder,
 					},
 				},
 			},
 		},
-		inline = { adapter = const.groq },
-		agent = { adapter = const.gemini },
+		inline = { adapter = provider.llm },
+		agent = { adapter = provider.llm },
 	},
 	display = {
 		action_palette = {
 			width = 95,
 			height = 10,
 			prompt = "Prompt ", -- Prompt used for interactive LLM calls
-			provider = const.provider, -- default|telescope|mini_pick
+			provider = provider.fuzzy_finder, -- default|telescope|mini_pick
 			opts = {
 				show_default_actions = true, -- Show the default actions in the action palette?
 				show_default_prompt_library = true, -- Show the default prompt library in the action palette?

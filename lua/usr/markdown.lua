@@ -17,8 +17,9 @@ end
 
 markview.setup({
 	preview = {
-        enable = true,
+		enable = true,
 		filetypes = { "markdown", "codecompanion" },
-        ignore_buftypes={}
+		ignore_buftypes = {},
+		map_gx = false,
 	},
 })

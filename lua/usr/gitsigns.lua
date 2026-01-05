@@ -5,17 +5,22 @@ end
 
 gitsigns.setup({
 	signs = {
-		add = { hl = "GitSignsAdd", text = " ", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-		change = { hl = "GitSignsChange", text = " ", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-		delete = { hl = "GitSignsDelete", text = " ", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		topdelete = { hl = "GitSignsDelete", text = "󱅁 ", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		changedelete = {
-			hl = "GitSignsChange",
-			text = "󰍷 ",
-			numhl = "GitSignsChangeNr",
-			linehl = "GitSignsChangeLn",
-		},
+		add = { text = "┃" },
+		change = { text = "┃" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = "~" },
+		untracked = { text = "┆" },
 	},
+	signs_staged = {
+		add = { text = "┃" },
+		change = { text = "┃" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = "~" },
+		untracked = { text = "┆" },
+	},
+	signs_staged_enable = true,
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -31,9 +36,7 @@ gitsigns.setup({
 		delay = 1000,
 		ignore_whitespace = false,
 	},
-	current_line_blame_formatter_opts = {
-		relative_time = false,
-	},
+	current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
 	sign_priority = 6,
 	update_debounce = 100,
 	status_formatter = nil, -- Use default
@@ -46,10 +49,25 @@ gitsigns.setup({
 		row = 0,
 		col = 1,
 	},
-	yadm = {
-		enable = false,
-	},
 })
+
+local api = vim.api
+
+-- api.nvim_set_hl(0, "GitSignsAdd", { link = "GitSignsAdd", fg = "#00ff00", bg = "NONE" })
+-- api.nvim_set_hl(0, "GitSignsAddLn", { link = "GitSignsAddLn" })
+-- api.nvim_set_hl(0, "GitSignsAddNr", { link = "GitSignsAddNr" })
+-- api.nvim_set_hl(0, "GitSignsChange", { link = "GitSignsChange", fg = "#0000ff", bg = "NONE" })
+-- api.nvim_set_hl(0, "GitSignsChangeLn", { link = "GitSignsChangeLn" })
+-- api.nvim_set_hl(0, "GitSignsChangeNr", { link = "GitSignsChangeNr" })
+-- api.nvim_set_hl(0, "GitSignsChangedelete", { link = "GitSignsChange" })
+-- api.nvim_set_hl(0, "GitSignsChangedeleteLn", { link = "GitSignsChangeLn" })
+-- api.nvim_set_hl(0, "GitSignsChangedeleteNr", { link = "GitSignsChangeNr" })
+-- api.nvim_set_hl(0, "GitSignsDelete", { link = "GitSignsDelete", fg = "#ff0000", bg = "NONE" })
+-- api.nvim_set_hl(0, "GitSignsDeleteLn", { link = "GitSignsDeleteLn" })
+-- api.nvim_set_hl(0, "GitSignsDeleteNr", { link = "GitSignsDeleteNr" })
+-- api.nvim_set_hl(0, "GitSignsTopdelete", { link = "GitSignsDelete" })
+-- api.nvim_set_hl(0, "GitSignsTopdeleteLn", { link = "GitSignsDeleteLn" })
+-- api.nvim_set_hl(0, "GitSignsTopdeleteNr", { link = "GitSignsDeleteNr" })
 
 vim.keymap.set("n", "<leader>hs", gitsigns.stage_hunk)
 vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk)

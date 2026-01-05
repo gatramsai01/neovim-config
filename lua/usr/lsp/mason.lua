@@ -12,6 +12,7 @@ local servers = {
 	"tailwindcss",
 	"helm_ls",
 	"ruff",
+	"terraformls",
 }
 
 local settings = {

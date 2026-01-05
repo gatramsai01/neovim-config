@@ -82,23 +82,24 @@ return packer.startup(function(use)
 	use({ "nvim-lua/plenary.nvim", branch = "master" })
 	-- Git Plugins
 	use({ "tpope/vim-fugitive" })
-	use({ "lewis6991/gitsigns.nvim", tag = "v0.9.0" })
+	use({ "lewis6991/gitsigns.nvim", tag = "v1.0.2" })
 	--
 	use({ "mbbill/undotree", tag = "rel_6.1" }) -- undotree plugin
 	use({ "catppuccin/nvim", tag = "v1.9.0" })
 	use({ "j-hui/fidget.nvim", tag = "v1.4.5" })
-	use({ "kevinhwang91/nvim-ufo", tag = "v1.4.0", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
+	use({ "kevinhwang91/nvim-ufo", commit = "5b75cf5fdb74054fc8badb2e7ca9911dc0470d94", requires = { "kevinhwang91/promise-async" } }) -- fold plugin
 	use({ "nvim-lualine/lualine.nvim" })
 	-- language plugins
-	use({ "ray-x/go.nvim", tag = "v0.10.0" }) -- golang plugin
+	use({ "ray-x/go.nvim", tag = "v0.10.4" }) -- golang plugin
 	use({ "mrcjkb/rustaceanvim", tag = "5.2.0" }) -- rust plugin
 	use({ "ThePrimeagen/harpoon", branch = "harpoon2" })
 
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "kylechui/nvim-surround", tag = "v2.3.0" })
 
-	use({ "OXY2DEV/markview.nvim", tag = "v25.5.1" })
-	use({ "olimorris/codecompanion.nvim", requires = { "ravitemer/codecompanion-history.nvim" } })
+	use({ "OXY2DEV/markview.nvim", tag = "v27.0.0" })
+	use({ "olimorris/codecompanion.nvim", requires = { "ravitemer/codecompanion-history.nvim" },tag="v18.2.0" })
+
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

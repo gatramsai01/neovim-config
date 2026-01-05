@@ -6,7 +6,7 @@ end
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
--- local diagnostics = null_ls.builtins.diagnostics
+local diagnostics = null_ls.builtins.diagnostics
 -- local eslint_d=
 
 local root_has_file = function(files)
@@ -38,7 +38,12 @@ null_ls.setup({
 			end,
 		}),
 		-- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+		require("none-ls.formatting.ruff_format"),
+		-- require("none-ls.formatting.ruff"),
 		formatting.stylua,
 		require("none-ls.formatting.rustfmt"),
+		formatting.terraform_fmt,
+		formatting.pg_format,
+		-- diagnostics.sqruff,
 	},
 })
