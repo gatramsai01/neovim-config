@@ -17,6 +17,8 @@ return {
 				gemini = "gemini",
 				groq = "groq",
 			}
+			local gemini = require("codecompanion.adapters.http.gemini")
+			gemini.schema.model.default = "gemini-3-flash-preview"
 
 			require("codecompanion").setup({
 				extensions = {
