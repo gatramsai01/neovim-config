@@ -43,6 +43,10 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = servers,
 				automatic_installation = true,
+				-- rustaceanvim owns rust-analyzer. A Mason copy can drift from rustc.
+				automatic_enable = {
+					exclude = { "rust_analyzer" },
+				},
 			})
 
 			local lspconfig = vim.lsp
