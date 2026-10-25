@@ -1,8 +1,8 @@
 return {
 	{
 		"L3MON4D3/LuaSnip",
-		-- follow latest release
-		version = "v2.*",
+		-- v2.* tags still call vim.diagnostic.disable(), removed in Neovim 0.12.
+		-- Track master until a tag includes 619aa65.
 		-- install jsregexp (optional!)
 		build = "make install_jsregexp",
 		config = function()

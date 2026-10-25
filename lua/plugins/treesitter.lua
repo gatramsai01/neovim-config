@@ -1,44 +1,62 @@
-return {"nvim-treesitter/nvim-treesitter",lazy=false,build=":TSUpdate",version="*",
-    config=function ()
-        local configs = require("nvim-treesitter.configs")
-        configs.setup({
-            ensure_installed = {
-                "vimdoc",
-                "lua",
-                "markdown",
-                "markdown_inline",
-                "bash",
-                "python",
-                "vim",
-                "go",
-                "gomod",
-                "gosum",
-                "gotmpl",
-                "gowork",
-                "html",
-                "javascript",
-                "typescript",
-                "json",
-                "proto",
-                "rust",
-                "yaml",
-                "toml",
-            }, -- put the language you want in this array
-            -- ensure_installed = "maintained",
-            -- ensure_installed = "all", -- one of "all" or a list of languages
-            ignore_install = { "" }, -- List of parsers to ignore installing
-            sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
+local langs = {
+	"vimdoc",
+	"lua",
+	"markdown",
+	"markdown_inline",
+	"bash",
+	"python",
+	"vim",
+	"go",
+	"gomod",
+	"gosum",
+	"gotmpl",
+	"gowork",
+	"html",
+	"javascript",
+	"typescript",
+	"json",
+	"proto",
+	"rust",
+	"yaml",
+	"toml",
+}
 
-            auto_install = true,
-            highlight = {
-                enable = true,       -- false will disable the whole extension
-                disable = { "css" }, -- list of language that will be disabled
-            },
-            autopairs = {
-                enable = true,
-            },
-            indent = { enable = true, disable = { "python", "css" } },
+return {
+	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
+	lazy = false,
+	build = ":TSUpdate",
+	config = function()
+		require("nvim-treesitter").setup({
+			install_dir = vim.fn.stdpath("data") .. "/site",
+		})
 
-        })
-    end,
+		-- no-op when the parsers are already installed
+		require("nvim-treesitter").install(langs):wait(300000)
+
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("nvim_treesitter_start", { clear = true }),
+			callback = function(args)
+				local ft = args.match
+				if ft == "css" then
+					return
+				end
+
+				-- Plugin buffers (NvimTree, fidget, ...) have no parser.
+				-- language.add() returns false instead of throwing, and
+				-- vim.treesitter.start() asserts if called anyway.
+				local lang = vim.treesitter.language.get_lang(ft)
+				if not lang or not vim.treesitter.language.add(lang) then
+					return
+				end
+				if not pcall(vim.treesitter.start, args.buf, lang) then
+					return
+				end
+
+				if ft ~= "python" then
+					vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
+			end,
+		})
+	end,
 }
